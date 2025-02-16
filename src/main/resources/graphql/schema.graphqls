@@ -1,0 +1,30 @@
+type Query {
+    getAllTeams: [BasketballTeam]
+    getTeamById(id: ID!): BasketballTeam
+    getAllPlayers: [BasketballPlayer]
+    getPlayerById(id: ID!): BasketballPlayer
+}
+
+type Mutation {
+    createTeam(name: String!, location: String!): BasketballTeam
+    updateTeam(id: ID!, name: String!, location: String!): BasketballTeam
+    deleteTeam(id: ID!): Boolean
+    createPlayer(firstName: String!, lastName: String!, jerseyNumber: Int, teamRoles: [String!]): BasketballPlayer
+    updatePlayer(id: ID!, firstName: String!, lastName: String!, jerseyNumber: Int, teamRoles: [String!]): BasketballPlayer
+    deletePlayer(id: ID!): Boolean
+}
+
+type BasketballTeam {
+    id: ID!
+    name: String!
+    location: String!
+    roster: [BasketballPlayer]
+}
+
+type BasketballPlayer {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    jerseyNumber: Int!
+    teamRoles: [String!]
+}
