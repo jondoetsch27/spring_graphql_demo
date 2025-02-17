@@ -2,17 +2,18 @@ package com.jdd.spring_graphql_demo.graphql;
 
 import java.util.List;
 
+import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
-@Component
-public class BasketballQueryResolver {
+@Controller
+public class BasketballController {
 
     private final BasketballTeamService basketballTeamService;
     private final BasketballPlayerService basketballPlayerService;
 
-    public BasketballQueryResolver(BasketballTeamService basketballTeamService, BasketballPlayerService basketballPlayerService) {
+    public BasketballController(BasketballTeamService basketballTeamService, BasketballPlayerService basketballPlayerService) {
         this.basketballTeamService = basketballTeamService;
         this.basketballPlayerService = basketballPlayerService;
     }
@@ -23,7 +24,7 @@ public class BasketballQueryResolver {
     }
 
     @QueryMapping
-    public BasketballTeam getTeamById(String id) {
+    public BasketballTeam getTeamById(@Argument String id) {
         return basketballTeamService.getTeamById(id);
     }
 
@@ -33,37 +34,37 @@ public class BasketballQueryResolver {
     }
 
     @QueryMapping
-    public BasketballPlayer getPlayerById(String id) {
+    public BasketballPlayer getPlayerById(@Argument String id) {
         return basketballPlayerService.getPlayerById(id);
     }
 
     @MutationMapping
-    public BasketballTeam createTeam(String name, String location) {
+    public BasketballTeam createTeam(@Argument String name, @Argument String location) {
         return basketballTeamService.createTeam(name, location);
     }
 
     @MutationMapping
-    public BasketballTeam updateTeam(String id, String name, String location) {
+    public BasketballTeam updateTeam(@Argument String id, @Argument String name, @Argument String location) {
         return basketballTeamService.updateTeam(id, name, location);
     }
 
     @MutationMapping
-    public Boolean deleteTeam(String id) {
+    public Boolean deleteTeam(@Argument String id) {
         return basketballTeamService.deleteTeam(id);
     }
 
     @MutationMapping
-    public BasketballPlayer createPlayer(String firstName, String lastName, Integer jerseyNumber, List<String> teamRoles) {
+    public BasketballPlayer createPlayer(@Argument String firstName, @Argument String lastName, @Argument Integer jerseyNumber, @Argument List<String> teamRoles) {
         return basketballPlayerService.createPlayer(firstName, lastName, jerseyNumber, teamRoles);
     }
 
     @MutationMapping
-    public BasketballPlayer updatePlayer(String id, String firstName, String lastName, Integer jerseyNumber, List<String> teamRoles) {
+    public BasketballPlayer updatePlayer(@Argument String id, @Argument String firstName, @Argument String lastName, @Argument Integer jerseyNumber, @Argument List<String> teamRoles) {
         return basketballPlayerService.updatePlayer(id, firstName, lastName, jerseyNumber, teamRoles);
     }
 
     @MutationMapping
-    public Boolean deletePlayer(String id) {
+    public Boolean deletePlayer(@Argument String id) {
         return basketballPlayerService.deletePlayer(id);
     }
 
