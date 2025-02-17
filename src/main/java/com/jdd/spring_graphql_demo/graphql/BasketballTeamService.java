@@ -2,7 +2,6 @@ package com.jdd.spring_graphql_demo.graphql;
 
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +24,14 @@ public class BasketballTeamService {
         return basketballTeamRepository.findById(id).orElseThrow(() -> new RuntimeException("Team not found"));
     }
 
-    public BasketballTeam createTeam(String name, String location) {
-        BasketballTeam team = new BasketballTeam(null, name, location, new ArrayList<>());
+    public BasketballTeam createTeam(String name, String location, List<String> roster) {
+        BasketballTeam team = new BasketballTeam(null, name, location, roster);
         return basketballTeamRepository.save(team);
     }
 
-    public BasketballTeam updateTeam(String id, String name, String location) {
+    public BasketballTeam updateTeam(String id, String name, String location, List<String> roster) {
         BasketballTeam team = getTeamById(id);
-        team = new BasketballTeam(id, name, location, team.roster());
+        team = new BasketballTeam(id, name, location, roster);
         return basketballTeamRepository.save(team);
     }
 

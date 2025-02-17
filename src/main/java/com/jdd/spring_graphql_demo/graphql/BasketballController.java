@@ -39,13 +39,13 @@ public class BasketballController {
     }
 
     @MutationMapping
-    public BasketballTeam createTeam(@Argument String name, @Argument String location) {
-        return basketballTeamService.createTeam(name, location);
+    public BasketballTeam createTeam(@Argument String name, @Argument String location, @Argument List<String> roster) {
+        return basketballTeamService.createTeam(name, location, roster);
     }
 
     @MutationMapping
-    public BasketballTeam updateTeam(@Argument String id, @Argument String name, @Argument String location) {
-        return basketballTeamService.updateTeam(id, name, location);
+    public BasketballTeam updateTeam(@Argument String id, @Argument String name, @Argument String location, @Argument List<String> roster) {
+        return basketballTeamService.updateTeam(id, name, location, roster);
     }
 
     @MutationMapping
@@ -54,13 +54,13 @@ public class BasketballController {
     }
 
     @MutationMapping
-    public BasketballPlayer createPlayer(@Argument String firstName, @Argument String lastName, @Argument Integer jerseyNumber, @Argument List<String> teamRoles) {
-        return basketballPlayerService.createPlayer(firstName, lastName, jerseyNumber, teamRoles);
+    public BasketballPlayer createPlayer(@Argument String firstName, @Argument String lastName, @Argument Integer jerseyNumber, @Argument String currentTeam, @Argument List<String> teamRoles) {
+        return basketballPlayerService.createPlayer(firstName, lastName, jerseyNumber, currentTeam, teamRoles);
     }
 
     @MutationMapping
-    public BasketballPlayer updatePlayer(@Argument String id, @Argument String firstName, @Argument String lastName, @Argument Integer jerseyNumber, @Argument List<String> teamRoles) {
-        return basketballPlayerService.updatePlayer(id, firstName, lastName, jerseyNumber, teamRoles);
+    public BasketballPlayer updatePlayer(@Argument String id, @Argument String firstName, @Argument String lastName, @Argument Integer jerseyNumber, @Argument String currentTeam, @Argument List<String> teamRoles) {
+        return basketballPlayerService.updatePlayer(id, firstName, lastName, jerseyNumber, currentTeam, teamRoles);
     }
 
     @MutationMapping

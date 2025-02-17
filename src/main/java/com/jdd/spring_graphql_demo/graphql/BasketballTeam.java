@@ -9,6 +9,6 @@ public record BasketballTeam(
     @Id String id, 
     String name, 
     String location, 
-    List<BasketballPlayer> roster
+    List<String> roster
 ) {
 }

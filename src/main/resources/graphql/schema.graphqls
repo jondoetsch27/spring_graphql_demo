@@ -6,11 +6,11 @@ type Query {
 }
 
 type Mutation {
-    createTeam(name: String!, location: String!): BasketballTeam
-    updateTeam(id: ID!, name: String!, location: String!): BasketballTeam
+    createTeam(name: String!, location: String!, roster: [ID]!): BasketballTeam
+    updateTeam(id: ID!, name: String!, location: String!, roster: [ID]!): BasketballTeam
     deleteTeam(id: ID!): Boolean
-    createPlayer(firstName: String!, lastName: String!, jerseyNumber: Int, teamRoles: [String!]): BasketballPlayer
-    updatePlayer(id: ID!, firstName: String!, lastName: String!, jerseyNumber: Int, teamRoles: [String!]): BasketballPlayer
+    createPlayer(firstName: String!, lastName: String!, jerseyNumber: Int, currentTeam: String!, teamRoles: [ID!]): BasketballPlayer
+    updatePlayer(id: ID!, firstName: String!, lastName: String!, jerseyNumber: Int, currentTeam: String!, teamRoles: [ID!]): BasketballPlayer
     deletePlayer(id: ID!): Boolean
 }
 
@@ -18,7 +18,7 @@ type BasketballTeam {
     id: ID!
     name: String!
     location: String!
-    roster: [BasketballPlayer]
+    roster: [ID!]
 }
 
 type BasketballPlayer {
@@ -26,5 +26,6 @@ type BasketballPlayer {
     firstName: String!
     lastName: String!
     jerseyNumber: Int!
+    currentTeam: ID!
     teamRoles: [String!]
 }

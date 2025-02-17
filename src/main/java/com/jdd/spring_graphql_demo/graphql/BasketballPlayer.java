@@ -11,6 +11,7 @@ public record BasketballPlayer (
     String firstName, 
     String lastName, 
     Integer jerseyNumber, 
+    String currentTeam,
     List<String> teamRoles
 ) {
 }
